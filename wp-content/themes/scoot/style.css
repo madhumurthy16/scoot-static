@@ -1,0 +1,2827 @@
+/*
+Theme Name: Scoot
+Text Domain: scoot
+Version: 1.0
+Description: A custom WordPress theme for a scooter sharing company
+Tags: one-column, custom-menu, custom-logo, footer-widgets
+Author: Madhu Murthy
+Author URI: https://madhumurthy.info
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+ */
+
+ /*--------------------------------------------------------------
+ >>> TABLE OF CONTENTS:
+ ----------------------------------------------------------------
+
+ 	0. 	CSS Reset
+ 	1. 	Document Setup
+ 	2. 	Element Base
+ 	3. 	Helper Classes
+ 	4. 	Site Header
+ 	5. 	Menu Modal
+ 	6.  Error 404
+ 	7.  Widgets
+ 	8.  Site Footer
+	9.  Home Page
+	10. Page Hero
+	11. About Page
+	12. Careers Page
+	13. 404 Page
+ 	14. Media Queries
+
+ ----------------------------------------------------------------------------- */
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	0. CSS Reset
+/* -------------------------------------------------------------------------- */
+
+html,
+body {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+address,
+big,
+cite,
+code,
+em,
+font,
+img,
+small,
+strike,
+sub,
+sup,
+li,
+ol,
+ul,
+fieldset,
+form,
+label,
+legend,
+button,
+table,
+caption,
+tr,
+th,
+td {
+	border: none;
+	font-size: inherit;
+	line-height: inherit;
+	margin: 0;
+	padding: 0;
+	text-align: inherit;
+}
+
+blockquote::before,
+blockquote::after {
+	content: "";
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	1. Document Setup
+/* -------------------------------------------------------------------------- */
+
+html {
+ font-size: 62.5%; /* 1rem = 10px */
+ scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce ) {
+ html {
+   scroll-behavior: auto;
+ }
+}
+
+body {
+  background: #fff;
+  color: #939CAA;
+  font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  word-break: break-word;
+  word-wrap: break-word;
+}
+
+/*#main-content {
+  overflow: hidden;
+}*/
+
+
+/* Clearing ---------------------------------- */
+
+/*.entry-content::after {
+  clear: both;
+  content: "";
+  display: block;
+}*/
+
+
+/* Base Transitions -------------------------- */
+
+/*a {
+  transition: color 0.15s linear;
+}*/
+
+
+/* Screen Reader Text  ----------------------- */
+
+.screen-reader-text {
+	border: 0;
+	clip: rect(1px, 1px, 1px, 1px);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute !important;
+	width: 1px;
+	word-wrap: normal !important;
+	word-break: normal;
+}
+
+.screen-reader-text:focus {
+	background-color: #f1f1f1;
+	border-radius: 3px;
+	box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+	clip: auto !important;
+	-webkit-clip-path: none;
+	clip-path: none;
+	color: #21759b;
+	display: block;
+	font-size: 14px;
+	font-size: 0.875rem;
+	font-weight: 700;
+	height: auto;
+	right: 5px;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	text-decoration: none;
+	top: 5px;
+	width: auto;
+	z-index: 100000;
+}
+
+
+/* Skip Link --------------------------------- */
+
+.skip-link {
+	left: -9999rem;
+	top: 2.5rem;
+	z-index: 999999999;
+	text-decoration: underline;
+}
+
+.skip-link:focus {
+	display: block;
+	left: 6px;
+	top: 7px;
+	font-size: 14px;
+	font-weight: 600;
+	text-decoration: none;
+	line-height: normal;
+	padding: 15px 23px 14px;
+	z-index: 100000;
+	right: auto;
+}
+
+
+/* Accessibility Settings -------------------- */
+
+@media ( prefers-reduced-motion: reduce ) {
+
+  * {
+    animation-duration: 0s !important;
+    transition-duration: 0s !important;
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	2. Element Base
+/* ---------------------------------------------*---------------------------- */
+
+/*main {
+  display: block;
+}*/
+
+h1,
+h2,
+h3,
+h4 {
+	font-family: 'Space Mono', sans-serif;
+  font-weight: 700;
+  color: #495567;
+  /*margin: 3.5rem 0 2rem;*/
+}
+
+h1 {
+	font-size: 40px;
+	line-height: 40px;
+	letter-spacing: -1.78571px;
+}
+
+h2 {
+	font-size: 32px;
+	line-height: 32px;
+	letter-spacing: -1.42857px;
+}
+
+h3 {
+	font-size: 24px;
+	line-height: 28px;
+	letter-spacing: -1.07143px;
+}
+
+h4 {
+	font-size: 18px;
+	line-height: 24px;
+	letter-spacing: -0.803571px;
+}
+
+p {
+	font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.5rem;
+  line-height: 2.5rem;
+  /* margin: 0 0 1em 0;*/
+}
+
+em,
+i {
+  font-style: italic;
+}
+
+/*small {
+  font-size: 0.75em;
+}*/
+
+b,
+strong {
+  font-weight: 700;
+}
+
+/*hr {
+  border-style: solid;
+  border-width: 0.1rem 0 0 0;
+  border-color: #f7f3f3;
+  margin-left: 2rem;
+}*/
+
+a {
+  color: #FCB72B;
+  text-decoration: none;
+}
+
+a:hover,
+a:focus {
+  text-decoration: none;
+}
+
+/* Lists ------------------------------------- */
+
+ul {
+	/*margin: 0 0 3rem 3rem;*/
+	list-style: none;
+}
+
+li {
+	line-height: 1.5;
+	/*margin: 0.5rem 0 0 2rem;*/
+}
+
+.reset-list-style, .reset-list-style ul {
+	list-style: none;
+	margin: 0;
+}
+
+/*.reset-list-style li {
+	margin: 0;
+}*/
+
+
+
+/* Media ------------------------------------- */
+
+img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+/* Buttons ----------------------------------- */
+
+button:focus {
+	outline: none;
+}
+
+.btn-call-to-action {
+	width: 180px;
+	height: 53px;
+	background-color: #FCB72B;
+	/*padding-top: 14px;
+	padding-bottom: 14px;*/
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	font-size: 15px;
+  line-height: 25px;
+	font-weight: bold;
+  text-align: center;
+	color: #FFFFFF;
+
+	transition: all .4s ease-in;
+}
+
+.btn-call-to-action:hover {
+	border: 3px solid #FCB72B;
+	background-color: transparent;
+	color: #FCB72B;
+	/*margin: -3px;*/
+	letter-spacing: 1.2px;
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	3. Helper Classes
+/* -------------------------------------------------------------------------- */
+
+/* Sections ---------------------------------- */
+
+/*section {
+	padding: 5rem 0;
+	width: 100%;
+}*/
+
+.section-inner {
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 144rem;
+}
+
+.section-inner,
+.content-inner {
+	width: calc(100% - 6.4rem);
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	4.	Site Header
+/* -------------------------------------------------------------------------- */
+
+#site-header {
+	background: #fff;
+	height: 6.4rem;
+}
+
+.header-inner {
+	padding: 2.2rem 0 2.2rem 0;
+}
+
+/*.site-logo,*/
+.header-titles {
+	width: 75.5px;
+	height: 20px;
+}
+
+.site-title {
+	font-size: 2.7rem;
+  line-height: 0.8;
+	font-weight: 700;
+}
+
+.site-title a {
+	color: #495567;
+}
+
+.site-title a:hover {
+	color: #FCB72B
+}
+
+/* Header Titles ----------------------------- */
+
+.header-titles-wrapper {
+	display: flex;
+	align-items: center;
+}
+
+.header-titles {
+	margin: 0 auto;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	5. Menu Modal
+/* -------------------------------------------------------------------------- */
+
+
+.container {
+	position: relative;
+	overflow: hidden;
+}
+
+.menu-modal {
+	visibility: hidden;
+	position: absolute;
+	/*top: 64px;*/
+	left: 0;
+	opacity: 0;
+	width: 25.6rem;
+	background-color: #333A44;
+	/*height: calc(100vh - 64px);*/
+	height: 603px;
+	-webkit-transform: translateX(-20%);
+					transform: translateX(-20%);
+	transition: opacity .3s ease-out, visibility .3s ease-out, -webkit-transform .3s ease-out;
+  transition: opacity .3s ease-out, visibility .3s ease-out, transform .3s ease-out;
+}
+
+.mobile-menu {
+	padding-top: 6.4rem;
+	height: 100%;
+}
+
+.modal-menu {
+	font-family: 'Space Mono', sans-serif;
+	font-weight: bold;
+	font-size: 18px;
+	line-height: 25px;
+	display: flex;
+	flex-flow: column nowrap;
+	height: 100%
+}
+
+.modal-menu li {
+	margin-bottom: 2.4rem;
+	cursor: pointer;
+}
+
+.modal-menu li a {
+	color: #E5ECF4;
+}
+
+.modal-menu li a:hover {
+	color: #FCB72B;
+}
+
+.modal-menu li:last-child {
+	margin-top: auto;
+}
+
+.site-header-menu-trigger {
+	cursor: pointer;
+	background-color: #fff;
+}
+
+.site-header-menu-active {
+	opacity: 1;
+	visibility: visible;
+	z-index: 200;
+	-webkit-transform: translateX(0);
+	transform: translateX(0);
+}
+
+.mobile-overlay {
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: rgba(0,0,0,0.75);
+}
+
+.mobile-overlay-active {
+	visibility: visible;
+	opacity: 1;
+	z-index: 100;
+}
+
+.modal-menu li:last-child a {
+	color: #fff;
+}
+
+.modal-menu li:last-child:hover a {
+	color: #FCB72B;
+}
+
+.invisible {
+	display: none;
+}
+
+/* Header Navigation ------------------------- */
+
+.header-navigation-wrapper {
+	display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	8. Site Footer
+/* -------------------------------------------------------------------------- */
+
+
+#site-footer {
+}
+
+.footer-widgets-outer-wrapper {
+	position: relative;
+	background-color: #495567;
+	padding: 8.8rem 0;
+	color: #fff;
+	overflow: hidden;
+}
+
+/*.footer-widgets-wrapper {
+	line-height: 0;
+}*/
+
+.footer-widgets {
+	text-align: center;
+}
+
+.footer-widgets .widget_custom_html {
+	line-height: 0;
+}
+
+.footer-widgets .widget-title {
+	color: #fff;
+	margin-bottom: 4rem;
+}
+
+.footer-widgets .textwidget button {
+	width: 11.357rem;
+	height: 4rem;
+	background: #E5ECF4;
+	border-radius: 4px;
+	/*padding: 5.71px 11.43px 6.43px 11.43px;*/
+}
+
+.footer-widgets .textwidget .btn-appstore {
+	background: url('./assets/icons/app-store.svg');
+	background-size: contain;
+	margin-right: 1.286rem;
+	margin-bottom: 1.4rem;
+}
+
+.footer-widgets .textwidget .btn-googleplay {
+	width: 13rem;
+	background: url('./assets/icons/google-play.svg');
+	background-size: contain;
+}
+
+.pattern-semi-circles {
+	position: absolute;
+	width: 1153px;
+	/*left: -607px;*/
+	right: -171px;
+	bottom: 0;
+}
+
+
+/* Footer Credits ---------------------------- */
+
+.footer-credits-wrapper {
+	padding-top: 6.4rem;
+	padding-bottom: 8.8rem;
+	background-color: #333A44;
+}
+
+.footer-credits {
+	display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.footer-navigation-wrapper {
+	margin-top: 4.144rem;
+	margin-bottom: 8.5rem;
+}
+
+.footer-menu li {
+	margin-bottom: 1.6rem;
+}
+
+.footer-menu li:last-child {
+	margin-bottom: 0;
+}
+
+.footer-menu li a {
+	font-family: 'space mono', sans-serif;
+	font-size: 1.5rem;
+	line-height: 2.5rem;
+	font-weight: 700;
+	color: #939CAA;
+}
+
+.footer-menu li a:hover {
+	color: #FCB72B;
+}
+
+.social-menu {
+	display: flex;
+}
+
+.social-menu li {
+	margin-right: 2.4rem;
+}
+
+.social-menu li:last-child {
+	margin-right: 0;
+}
+
+.social-menu li a svg {
+	transition: transform .4s ease-in;
+}
+
+.social-menu li a svg:hover {
+	transform: scale(1.1);
+}
+
+
+.social-menu li a svg:hover path {
+	fill: #fff;
+	background: #fff;
+	transition: .4s cubic-bezier(.79,.23,.5,.94);
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	9. Home Page
+/* -------------------------------------------------------------------------- */
+
+
+/* Section - Hero Image------------------------- */
+
+.hero-image {
+	background-image: url('./assets/images/home-hero-mobile.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 65rem;
+	position: relative;
+	overflow: hidden;
+	margin-bottom: 12rem;
+	z-index: 50;
+	/*background: #2F3B59;
+	opacity: 0.75;*/
+}
+
+.hero-content {
+	text-align: center;
+	padding: 11.5rem 4% 0 4%;
+}
+
+.hero-inner {
+	max-width: 31.1rem;
+  margin: 0 auto;
+}
+
+.hero-title {
+		color: #fff;
+		margin-bottom: 2.4rem;
+}
+
+.hero-text {
+	margin-bottom: 3.4rem;
+	color: #fff;
+}
+
+.hero-cta {
+	/*padding-left: 4rem;
+	padding-right: 4rem;*/
+	margin-bottom: 0.7rem;
+	margin: 0 auto;
+}
+
+/*.hero-cta a {
+	font-weight: bold;
+}*/
+
+.hero-image .right-arrow {
+	width: 45.418rem;
+	height: 13.744rem;
+	position: absolute;
+	/*left: -31.2rem;*/
+	/*right: 23.0rem;*/
+	right: 62%;
+	bottom: 3.6rem;
+}
+
+.hero-image .white-circles {
+	display: none;
+}
+
+.hero-image .line {
+	display: none;
+}
+
+/* Main Content -------------------------------- */
+
+#main-content {
+	text-align: center;
+}
+
+/* Section - How it works ---------------------- */
+
+.how-it-works {
+	margin-bottom: 12rem;
+	padding: 0 1rem;
+	/*padding: 12rem 1rem;*/
+}
+
+.how-it-works .accent-border {
+	display: none;
+}
+
+.how-it-works img {
+	margin: 0 auto 2.4rem;
+	width: 5.6rem;
+	height: 5.6rem;
+}
+
+.how-it-works h4 {
+	margin-bottom: 2.4rem;
+}
+
+
+.how-it-works div:not(.accent-border):not(.ride-scooter) {
+	margin-bottom: 4.8rem;
+}
+
+
+/* Sections - Riding Telemetry
+						- Cities Near You
+						- Payments
+------------------------------------------------ */
+
+.riding-telemetry,
+.cities-near-you,
+.payments {
+	margin-bottom: 12rem;
+}
+
+.riding-telemetry .telemetry-img-wrapper,
+.cities-near-you .near-you-img-wrapper,
+.payments .payments-img-wrapper {
+	/*background-image: url('./assets/images/telemetry.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	/*overflow: hidden;*/
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5.6rem;
+	width: 100%;
+	max-width: 31.1rem;
+	height: 31.1rem;
+	position: relative;
+}
+
+.riding-telemetry .telemetry-img-wrapper .telemetry,
+.cities-near-you .near-you-img-wrapper .near-you,
+.payments .payments-img-wrapper  .payments {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.riding-telemetry .pattern-circle,
+.cities-near-you .pattern-circle,
+.payments .pattern-circle {
+	display: none;
+}
+
+.telemetry-desc h2,
+.cities-desc h2,
+.payments-desc h2 {
+	margin-bottom: 3.2rem;
+}
+
+.telemetry-desc p,
+.cities-desc p,
+.payments-desc p {
+	margin-bottom: 3.2rem;
+	padding: 0 1rem;
+}
+
+.telemetry-desc .telemetry-cta,
+.cities-desc .cities-cta,
+ .payments-desc .payments-cta {
+	margin: 0 auto;
+}
+
+
+/* Section - Riding Telemetry ------------------ */
+
+.riding-telemetry .left-downward-arrow {
+	position: absolute;
+	width: 74.1rem;
+  height: 15.1rem;
+	bottom: -5px;
+	left: -1.4%;
+}
+
+/* Section - Cities Near You ------------------- */
+
+.cities-near-you .right-arrow {
+	position: absolute;
+	width: 73.5rem;
+  height: 15.1rem;
+	left: -68.35%;
+	top: -0.75rem;
+}
+
+/* Section - Payments -------------------------- */
+
+.payments .left-downward-arrow {
+	position: absolute;
+	width: 74.1rem;
+  height: 15.1rem;
+	left: 30.07%;
+}
+
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	9. Page Hero - About, Careers, Location
+/* -------------------------------------------------------------------------- */
+
+
+.page-hero {
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 6rem 0;
+	z-index: 50;
+}
+
+.page-hero-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.page-hero-content .page-hero-title {
+	color: #fff;
+}
+
+.page-hero-content .page-hero-pattern {
+	display: none;
+}
+
+/* About - Page Hero ------------------------- */
+
+.about-hero {
+	background-image: url( './assets/images/about-hero-mobile.jpg' );
+	margin-bottom: 7.2rem;
+}
+
+/* Careers, Locations, Job( CPT ) Single Template - Page Hero ------------ */
+
+.careers-hero,
+.locations-hero,
+.cpt-job-hero {
+	background-image: url( './assets/images/careers-location-hero-mobile.jpg' );
+	margin-bottom: 7.2rem;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	11. About Page and Careers Page
+/* -------------------------------------------------------------------------- */
+
+/* Sections - Our Values (About page)
+						- Why Join Us ( Careers page)
+------------------------------------------------ */
+
+
+.our-values,
+.why-join-us {
+	margin-bottom: 14.5rem;
+}
+
+.our-values h2,
+.why-join-us h2 {
+	margin-bottom: 6.4rem;
+}
+
+.our-values .tech,
+.our-values .integrity,
+.why-join-us .tech,
+.why-join-us .integrity {
+	margin-bottom: 5.6rem;
+}
+
+
+.our-values .tech .img-tech,
+.our-values .integrity .img-integrity,
+.our-values .community .img-community,
+.why-join-us .tech .img-tech,
+.why-join-us .integrity .img-integrity,
+.why-join-us .community .img-community {
+	margin: 0 auto;
+	border-radius: 50%;
+}
+
+.our-values .tech span,
+.our-values .integrity span,
+.our-values .community span,
+.why-join-us .tech span,
+.why-join-us .integrity span,
+.why-join-us .community span {
+	width: 9.6rem;
+	height: 9.6rem;
+	font-family: 'Space Mono', sans-serif;
+	font-weight: 700;
+	font-size: 2.4rem;
+	line-height: 2.8rem;
+	letter-spacing: -1.07;
+	border-radius: 50%;
+	background-color: #FCB72B;
+  color: #495567;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-bottom: 1.6rem;
+
+	transform: translateY(-50%);*
+}
+
+.our-values .tech p,
+.our-values .integrity p,
+.our-values .community p,
+.why-join-us .tech p,
+.why-join-us .integrity p,
+.why-join-us .community p {
+	padding: 0 0.9rem;
+}
+
+.our-values .tech h3,
+.our-values .integrity h3,
+.our-values .community h3,
+.why-join-us .tech h3,
+.why-join-us .integrity h3,
+.why-join-us .community h3 {
+	margin-top: -4.8rem;
+	margin-bottom: 2.7rem;
+}
+
+
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	11. About Page
+/* -------------------------------------------------------------------------- */
+
+/* Sections - Digital Era
+						- Better Living
+------------------------------------------------ */
+
+
+.digital-era,
+.better-living {
+	margin-bottom: 12rem;
+}
+
+.digital-era .digital-era-img-wrapper,
+.better-living .better-living-img-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5.6rem;
+	width: 100%;
+	max-width: 31.1rem;
+	height: 31.1rem;
+	position: relative;
+}
+
+.digital-era .digital-era-img-wrapper .img-digital-era,
+.better-living .better-living-img-wrapper .img-better-living {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.digital-era .pattern-circle,
+.better-living .pattern-circle {
+	display: none;
+}
+
+.digital-era-desc h2,
+.better-living-desc h2 {
+	margin-bottom: 3.2rem;
+}
+
+.digital-era-desc p,
+.better-living-desc p {
+	/*margin-bottom: 3.2rem;*/
+	padding: 0 1rem;
+}
+
+/* Section - Digital Era ----------------------- */
+
+.digital-era .left-upward-arrow {
+	position: absolute;
+	width: 74.1rem;
+  height: 15.1rem;
+	bottom: 32.5px;
+	left: -1.4%;
+}
+
+/* Section - Better Living --------------------- */
+
+.better-living .right-arrow {
+	position: absolute;
+	width: 73.5rem;
+  height: 15.1rem;
+	left: -46.66%;
+	top: -0.75rem;
+}
+
+/* Section - FAQs ------------------------------ */
+
+.faqs {
+	margin-bottom: 12rem;
+}
+
+.faqs h2 {
+	margin-bottom: 4.8rem;
+}
+
+.faqs .faq-how-it-works {
+	margin-bottom: 4.8rem;
+}
+
+.faqs h3 {
+	margin-bottom: 3.2rem;
+}
+
+.faqs .faq {
+	background-color: #F2F5F9;
+	margin-bottom: 1.6rem;
+	padding: 3.2rem;
+	padding-right: 2.8rem;
+}
+
+.faqs .faq:hover {
+	cursor: pointer;
+	background-color: #FFF4DF;
+}
+
+.faq .faq-question {
+	display: flex;
+  justify-content: space-between;
+}
+
+.faq .faq-question h4 {
+	text-align: left;
+	padding-right: 1rem;
+}
+
+.faqs .faq .faq-toggle-answer {
+	align-self: center;
+}
+
+.faqs .faq .faq-answer {
+	display: none;
+	text-align: left;
+}
+
+.faqs .show-answer .faq-answer {
+	display: block;
+	margin-top: 2.4rem;
+	padding-right: 1.54rem;
+}
+
+.faqs .faq-toggle-answer img {
+	transition: transform  .4s ease-in-out;
+}
+
+.faqs .show-answer .faq-toggle-answer img {
+	transform: rotate(180deg);
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	10. Careers Page
+/* -------------------------------------------------------------------------- */
+
+
+/* Section - Join Us --------------------------- */
+
+.join-us {
+	margin-bottom: 12rem;
+}
+
+.join-us .join-us-img-wrapper {
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 5.6rem;
+	width: 100%;
+	max-width: 31.1rem;
+	height: 31.1rem;
+	position: relative;
+}
+
+.join-us .join-us-img-wrapper .join-us {
+	width: 100%;
+	border-radius: 50%;
+}
+
+.join-us .left-downward-arrow {
+	position: absolute;
+	width: 74.1rem;
+  height: 15.1rem;
+	bottom: -5px;
+	left: -1.4%;
+}
+
+.join-us .pattern-circle {
+	display: none;
+}
+
+.join-us-desc h2{
+	margin-bottom: 3.2rem;
+}
+
+.join-us-desc p {
+	margin-bottom: 3.2rem;
+	padding: 0 1.3rem;
+}
+
+.join-us-desc .join-us-cta {
+	margin: 0 auto;
+}
+
+/* Section - Job Listings ---------------------- */
+
+.job-listings {
+	margin-bottom: 12rem;
+}
+
+.job-listings .job {
+	background-color: #F2F5F9;
+	padding: 3.2rem;
+	padding-top: 3.6rem;
+	margin-bottom: 1.6rem;
+}
+
+.job .job-title {
+	margin-bottom: 0.4rem;
+}
+
+.job .job-location {
+	margin-bottom: 1.6rem;
+}
+
+.job .apply-cta {
+	width: 100%;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	13. Location Page
+/* -------------------------------------------------------------------------- */
+
+.world-map {
+	/*background-image: url( './assets/images/world-map-mobile.png' );
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: 15.2rem;*/
+	margin-bottom: 4rem;
+}
+
+.locations-mobile .location-mobile {
+	margin-bottom: 1.6rem;
+}
+
+.locations-mobile .location-mobile:last-child {
+		margin-bottom: 0;
+}
+
+.locations-mobile .location-mobile {
+	width: 100%;
+	max-width: 62.2rem;
+	height: 7.2rem;
+	background-color: rgba(252,183,43,0.15);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Section - Message-us ------------------------ */
+
+.message-us {
+	margin-bottom: 7.2rem;
+}
+
+.message-us h2 {
+	margin-bottom: 3.2rem;
+}
+
+.message-us p {
+	margin-bottom: 3.2rem;
+	padding: 0 1rem;
+}
+
+.message-us .message-us-cta {
+	margin: 0 auto;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	14. Job( CPT ) Single Template
+/* -------------------------------------------------------------------------- */
+
+.job-wrapper {
+	margin-bottom: 12rem;
+}
+
+.single-job .job-title {
+	margin-bottom: 0.4rem;
+}
+
+.single-job .job-location {
+	margin-bottom: 1.6rem;
+}
+
+.single-job .apply-cta {
+	margin: 0 auto;
+	margin-bottom: 3.2rem;
+}
+
+.single-job .job-desc {
+	background-color: #F2F5F9;
+	padding: 3.2rem;
+	padding-top: 3.6rem;
+	text-align: left;
+	margin-bottom: 3.2rem;
+}
+
+.single-job .job-desc h4 {
+	margin-bottom: 2.4rem;
+}
+
+.single-job .job-desc p {
+	margin-right: 0.9rem;
+}
+
+.single-job .all-jobs a:hover {
+	color: #939CAA;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*	14. Animations
+/* -------------------------------------------------------------------------- */
+
+.right-on-scroll,
+.down-on-scroll {
+	opacity: 0;
+}
+
+@keyframes fadeIn {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+/* Slide Up on Scroll -------------------------- */
+
+@keyframes slideRight {
+	0% {
+		transform: translateX(-4rem);
+	}
+	100% {
+		transform: translateX(0);
+	}
+}
+
+.animate-slide-right {
+	animation: slideRight .6s .25s cubic-bezier(0.175, 0.885, 0.32, 1.275), fadeIn .6s .25s ease-in;
+	animation-fill-mode: forwards;
+}
+
+/* Slide Down on Scroll ------------------------ */
+
+@keyframes slideDown {
+	0% {
+		transform: translateY(-4rem);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
+.animate-slide-down {
+	animation: slideDown .6s .25s cubic-bezier(0.175, 0.885, 0.32, 1.275), fadeIn .3s .25s ease-in;
+	animation-fill-mode: forwards;
+ }
+
+ /* -------------------------------------------------------------------------- */
+
+ /*	13. 404 Page
+ /* -------------------------------------------------------------------------- */
+
+
+ .page-not-found-error {
+	 margin-bottom: 12rem;
+ }
+
+ .page-not-found-error h2 {
+	 margin-bottom: 3.2rem;
+ }
+
+
+/* -------------------------------------------------------------------------- */
+
+/*	15. Media Queries
+/* -------------------------------------------------------------------------- */
+
+
+@media (min-width: 376px) {
+
+	/* Helper Classes ------------------------- */
+
+	 /* SECTIONS */
+
+	 /*.header-footer-section-inner {
+ 	 		width: calc(100% - 8rem);
+ 	}*/
+
+	/* Footer --------------------------------- */
+
+	.footer-widgets .textwidget .btn-appstore {
+		margin-bottom: 0;
+	}
+
+  /* Home Page ------------------------------ */
+
+	/* HERO */
+
+	.hero-image {
+		background-image: url('./assets/images/home-hero-tablet.jpg');
+	}
+
+	/* Page Hero----------------------------- */
+
+	/* ABOUT PAGE - HERO */
+
+	.about-hero {
+		background-image: url( './assets/images/about-hero-tablet.jpg' );
+	}
+
+	/* CAREERS,LOCATION PAGE - HERO */
+
+	.careers-hero,
+	.location-hero,
+	.cpt-job-hero {
+		background-image: url( './assets/images/careers-locations-hero-tablet.jpg' );
+	}
+
+	/* Location Page -------------------------- */
+
+	.locations-mobile {
+		display: none;
+	}
+}
+
+
+
+@media (min-width: 599px) {
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .right-arrow {
+		left: -74%;
+	}
+}
+
+@media (min-width: 640px ) {
+	.hero-content .hero-inner {
+		max-width: 450px;
+	}
+}
+
+@media (min-width: 720px ) {
+
+	.cities-near-you .right-arrow {
+		left: -73%;
+	}
+}
+
+
+@media (min-width: 768px) {
+
+/* Element Base--------------------------- */
+
+h1 {
+	font-size: 5.6rem;
+	line-height: 5.6rem;
+	letter-spacing: -2.5;
+}
+
+h2 {
+	font-size: 4.8rem;
+	line-height: 4.8rem;
+	letter-spacing: -2.14;
+}
+
+h3 {
+	font-size: 4rem;
+	line-height: 4.8rem;
+	letter-spacing: -1.79;
+}
+
+h4 {
+	font-size: 2.4rem;
+	line-height: 2.8rem;
+	letter-spacing: -1.07;
+}
+
+/* Menu Modal -------------------------------- */
+
+.menu-modal {
+	display: none;
+}
+
+/* Header Titles ----------------------------- */
+
+#site-header {
+	height: auto;
+}
+
+.header-inner {
+	display: flex;
+	align-items: center;
+	padding: 2.2rem 0 2.1rem 0;
+	/*padding: 2.1rem 0 2rem 0;*/
+}
+
+.header-titles-wrapper {
+	margin-right: 5.818rem;
+}
+
+.header-titles {
+	width: 107.82px;
+	height: 28.56px;
+}
+
+.site-title {
+	font-size: 3.9rem;
+}
+
+
+/* Header Navigation ------------------------- */
+
+.header-navigation-wrapper,
+.primary-menu-wrapper,
+.primary-menu {
+	width: 100%;
+}
+
+.header-navigation-wrapper {
+	display: flex;
+}
+
+.primary-menu {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.primary-menu li {
+	font-family: 'Space Mono', sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	line-height: 25px;
+	margin-right: 3.2rem;
+  cursor: pointer;
+}
+
+.primary-menu li:last-child {
+	margin-right: 0;
+	margin-left: auto;
+}
+
+.primary-menu li a {
+	color: #939CAA;
+}
+
+.primary-menu li a:hover {
+	color: #FCB72B;
+}
+
+
+.primary-menu li:last-child a {
+	color: #fff;
+}
+
+.primary-menu li:last-child:hover a {
+	color: #FCB72B;
+}
+
+
+/* Menu Modal ---------------------------- */
+
+  .site-header-menu-trigger {
+     display: none;
+   }
+
+/* Helper Classes ------------------------- */
+
+ /* SECTIONS */
+
+ /*section {
+ 	padding: 5rem 0;
+ 	width: 100%;
+ }*/
+
+ .section-inner {
+		width: calc(100% - 8rem);
+ }
+
+ .content-inner {
+	 width: calc(100% - 19.5rem);
+ }
+
+ /* Home Page ------------------------------ */
+
+ /* HERO */
+
+ /*.content-inner {
+	 padding-left: 5.7rem;
+	 padding-right: 5.8rem;
+ }*/
+
+	.hero-image {
+		/*background: #2F3B59;
+		opacity: 0.75;*/
+		background-image: url('./assets/images/home-hero-desktop.jpg');
+	}
+
+	.hero-content {
+		padding-top: 13.7rem;
+	}
+
+	.hero-content .hero-inner {
+		max-width: 573px;
+	}
+
+	.hero-title {
+		padding: 0 2rem;
+	}
+
+	.hero-text {
+		margin-bottom: 3.2rem;
+		/*padding: 0 1rem;*/
+	}
+
+	.hero-cta {
+		margin-bottom: 3.8rem;
+		/*cursor: pointer;*/
+	}
+
+	.hero-image .right-arrow {
+		position: absolute;
+		width: 45.4rem;
+		height: 15.2rem;
+		right: 57.42%;
+		bottom: 3.2rem;
+	}
+
+	.hero-image .white-circles {
+		position: absolute;
+		display: block;
+		width: 23.4rem;
+		height: 6.3rem;
+		/*left: 56.5rem;*/
+		right: -31px;
+		right: -4%;
+		bottom: 4.5rem;
+		/*transform: translate(56.5rem, -6.55rem);*/
+	}
+
+	/* SECTION - HOW IT WORKS */
+
+	.how-it-works {
+		position: relative;
+		padding: 0;
+		margin-top: 12.2rem;
+		margin-bottom: 12rem;
+	}
+
+	.how-it-works img {
+		width: 9.6rem;
+		height: 9.6rem;
+		margin: 0;
+		grid-column: 1;
+    grid-row: 1/3;
+		z-index: 2;
+	}
+
+	.how-it-works div:not(.accent-border) {
+		display: grid;
+		grid-template-columns: 1fr 39.8rem;
+		grid-template-columns: 30.54% 69.46%;
+		text-align: left;
+	}
+
+	.how-it-works h4 {
+    margin-bottom: 2.7rem;
+		grid-column: 2;
+	}
+
+	.how-it-works p {
+		grid-column: 2;
+		padding-right: 2.5rem;
+	}
+
+	.how-it-works div:not(.accent-border):not(.ride-scooter) {
+		margin-bottom: 4rem;
+	}
+
+	.how-it-works .accent-border {
+		display: block;
+		position: absolute;
+		height: 51.3rem;
+		left: 4.05rem;
+		top: -15rem;
+		border: 7.5px solid #E5ECF4;
+		background-color: #E5ECF4;
+		z-index: 1;
+	}
+
+	/* SECTIONS - RIDING TELEMETRY
+            	- CITIES NEAR YOU,
+							- PAYMENTS */
+
+
+	.riding-telemetry .telemetry-img-wrapper,
+	.cities-near-you .near-you-img-wrapper,
+	.payments .payments-img-wrapper {
+		max-width: 44.5rem;
+		height: 44.5rem;
+	}
+
+	.telemetry-desc h2,
+	.cities-desc h2,
+	.payments h2 {
+		margin-bottom: 4rem;
+		padding: 0 5.8rem;
+	}
+
+	.telemetry-desc p,
+	.cities-desc p,
+	.payments p {
+		margin-bottom: 4rem;
+		padding: 0 2rem;
+	}
+
+	.telemetry-desc .telemetry-cta,
+	.cities-desc .cities-cta,
+	.payments-desc .payments-cta {
+		margin: 0 auto;
+	}
+
+	.riding-telemetry .pattern-circle,
+	.cities-near-you .pattern-circle,
+	.payments .pattern-circle {
+		display: block;
+		position: absolute;
+    width: 445px;
+    height: 445px;
+	}
+
+
+	/* SECTION - RIDING TELEMETRY */
+
+	.riding-telemetry {
+		margin-bottom: 12.8rem;
+	}
+
+	.riding-telemetry .telemetry-img-wrapper {
+		margin-bottom: 5.6rem;
+	}
+
+	.riding-telemetry .pattern-circle {
+		transform: translate(114.6%);
+	}
+
+	.riding-telemetry .left-downward-arrow {
+		left: -15%;
+	}
+
+
+	/* SECTIONS - CITIES NEAR YOU,
+							- PAYMENTS */
+
+	.cities-near-you,
+	.payments {
+		margin-bottom: 12rem;
+	}
+
+	.cities-near-you .near-you-img-wrapper,
+	.payments .payments-img-wrapper {
+		margin-bottom: 6.4rem;
+	}
+
+
+	/* SECTION - CITIES NEAR YOU */
+
+	.cities-near-you .pattern-circle {
+		transform: translate(-114.6%);
+	}
+
+	.cities-near-you .right-arrow {
+		left: -56.5%;
+	}
+
+
+	/* SECTION - PAYMENTS */
+
+	.payments .pattern-circle {
+		transform: translate(114.6%);
+	}
+
+	.payments .left-downward-arrow {
+		left: 56%;
+		top: 8.5rem;
+	}
+
+	/* Page Hero - About
+							 - Careers
+							 - Locations
+	------------------------------------------- */
+
+	.page-hero {
+		position: relative;
+		overflow: hidden;
+		padding: 7.2rem 0;
+	}
+
+	.page-hero-content {
+		justify-content: space-between;
+	}
+
+	.page-hero-content .page-hero-pattern  {
+		display: block;
+		position: absolute;
+    width: 23.4rem;
+    right: -31px;
+	}
+
+	/* ABOUT PAGE - HERO */
+
+	.about-hero {
+		/*background-image: url( './assets/images/about-hero-desktop.jpg' );*/
+		margin-bottom: 14.4rem;
+	}
+
+	/* CAREERS, LOCATION, JOB(CPT) SINGLE PAGES - HERO */
+
+	.careers-hero,
+	.location-hero,
+	.cpt-job-hero {
+		/*background-image: url( './assets/images/careers-locations-hero-desktop.jpg' );*/
+		margin-bottom: 14.4rem;
+	}
+
+	/* About & Careers Page ------------------------- */
+
+	/* SECTIONS - OUR VALUES (ABOUT PAGE)
+							- WHY JOIN US (CAREERS PAGE)
+	------------------------------------------------- */
+
+
+	.our-values,
+	.why-join-us {
+		margin-bottom: 12rem;
+	}
+
+	.our-values h2,
+	.why-join-us h2 {
+		margin-bottom: 10.5rem;
+	}
+
+	.our-values .tech,
+	.our-values .integrity,
+	.why-join-us .tech,
+	.why-join-us .integrity {
+		margin-bottom: 5.5rem;
+	}
+
+	.our-values .tech span,
+	.our-values .integrity span,
+	.our-values .community span,
+	.why-join-us .tech span,
+	.why-join-us .integrity span,
+	.why-join-us .community span {
+		margin-bottom: 3.2rem;
+	}
+
+	.our-values .tech p,
+	.our-values .integrity p,
+	.our-values .community p,
+	.why-join-us .tech p,
+	.why-join-us .integrity p,
+	.why-join-us .community p {
+		padding: 0 7rem;
+	}
+
+
+	/* About Page ----------------------------- */
+
+	/* SECTIONS - DIGITAL ERA,
+							- BETTER LIVING */
+
+	.digital-era .digital-era-img-wrapper,
+	.better-living .better-living-img-wrapper {
+		max-width: 44.5rem;
+		height: 44.5rem;
+	}
+
+	.digital-era .pattern-circle,
+	.better-living .pattern-circle {
+		display: block;
+    position: absolute;
+    width: 445px;
+    height: 445px;
+	}
+
+	.digital-era-desc h2,
+	.better-living-desc h2 {
+		margin-bottom: 4rem;
+	}
+
+	.digital-era-desc p,
+	.better-living-desc p {
+		padding: 0 1.5rem;
+	}
+
+	/* SECTION - DIGITAL ERA */
+
+	.digital-era .left-upward-arrow {
+		left: -28%;
+	}
+
+	.digital-era .pattern-circle {
+		transform: translate(114.6%);
+	}
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .right-arrow {
+		left: -59.5%;
+		top: 0;
+	}
+
+	.better-living .pattern-circle {
+		transform: translate(-114.6%);
+	}
+
+	/* SECTION - FAQS */
+
+	.faqs h2 {
+		margin-bottom: 6.4rem;
+	}
+
+	.faqs .faq-how-it-works {
+		margin-bottom: 6.4rem;
+	}
+
+	.faqs .faq {
+		margin-bottom: 2.4rem;
+		padding: 3.2rem;
+		padding-right: 2.8rem;
+	}
+
+	.faq .faq-question h4 {
+		text-align: left;
+		padding-right: 1rem;
+	}
+
+	.faqs .faq {
+		padding: 3.2rem 3.2rem 3.2rem 4rem;
+	}
+
+	.faqs .show-answer .faq-answer {
+		padding-right: 3.6rem;
+	}
+
+	/* Careers Page --------------------------- */
+
+	/* SECTION - JOIN US */
+
+	.join-us .join-us-img-wrapper {
+		max-width: 44.5rem;
+		height: 44.5rem;
+		margin-bottom: 6.4rem;
+	}
+
+	.join-us-desc h2{
+		margin-bottom: 4rem;
+		padding: 0 5.8rem;
+	}
+
+	.join-us-desc p {
+		margin-bottom: 4rem;
+		padding: 0 1.3rem;
+	}
+
+	.join-us .left-downward-arrow {
+		left: -29%;
+	}
+
+	.join-us .pattern-circle {
+		display: block;
+		position: absolute;
+    width: 445px;
+    height: 445px;
+
+		transform: translate(114.6%);
+	}
+
+	/* SECTION - JOB LISTINGS */
+
+	 .job-listings .job {
+		 display: grid;
+		 grid-template-columns: 1fr 1fr;
+		 padding: 3.4rem 4.8rem 3.3rem 4.8rem;
+		 margin-bottom: 1.6rem;
+	}
+
+	.job-listings article:last-child {
+		margin-bottom: 0;
+	}
+
+	.job .job-title {
+		margin-bottom: 0.8rem;
+	}
+
+	.job .job-title,
+	.job .job-location {
+		grid-column: 1 / 2;
+		text-align: left;
+	}
+
+	.job .job-location {
+		margin-bottom: 0;
+	}
+
+	.job .apply-cta {
+		grid-column: 2;
+		grid-row: 1 / 3;
+		align-self: center;
+		margin-left: auto;
+		width: 180px;
+	}
+
+	/* Job( CPT ) Single Template ------------- */
+
+	.single-job .job-title {
+		margin-bottom: 0.8rem;
+	}
+
+	.single-job .job-location {
+		margin-bottom: 1.8rem;
+	}
+
+	.single-job .job-desc {
+		padding: 3.4rem 4.8rem 3.3rem 4.8rem;
+	}
+
+	.single-job .job-desc p {
+		margin-right: 0.9rem;
+	}
+
+	/* Location Page -------------------------- */
+
+	.world-map {
+		/*background-image: url( './assets/images/world-map-tablet.png' );
+		height: 33.7rem;*/
+		margin-bottom: 6.4rem;
+	}
+
+	.locations-mobile {
+		display: none;
+	}
+
+	.message-us {
+		margin-bottom: 12rem;
+	}
+
+	.message-us h2 {
+		margin-bottom: 4rem;
+		padding: 0 1rem;
+	}
+
+	.message-us p {
+		margin-bottom: 4rem;
+		padding: 0 1rem;
+	}
+
+	.message-us .message-us-cta {
+		margin: 0 auto;
+	}
+
+
+	/* 404 Page ------------------------------- */
+
+	.page-not-found-error h2 {
+		margin-bottom: 4rem;
+	}
+
+
+	/* Site Footer ---------------------------- */
+
+		.footer-widgets-outer-wrapper {
+			padding: 6.2rem 11.5rem;
+		}
+
+		.footer-widgets .widget-title {
+			padding: 0 2.4rem;
+		}
+
+		.pattern-semi-circles {
+			right: -16.3rem;
+	  }
+
+		.footer-credits-wrapper {
+			padding: 3.4rem 0;
+		}
+
+		.footer-credits {
+			flex-direction: row;
+		  justify-content: space-between;
+			align-items: center;
+		}
+
+		.footer-credits .footer-logo {
+			margin-right: 5.858rem;
+		}
+
+		.footer-navigation-wrapper {
+			margin: 0;
+			margin-right: auto;
+		}
+
+		.footer-menu {
+			display: flex;
+			align-items: center;
+		}
+
+		.footer-menu li {
+			margin-right: 3.2rem;
+			margin-bottom: 0;
+		}
+
+		.footer-menu li:last-child {
+			margin-right: 0;
+		}
+
+}
+
+
+@media (min-width: 769px) {
+
+	/* ABOUT PAGE - HERO */
+
+	.about-hero {
+		background-image: url( './assets/images/about-hero-desktop.jpg' );
+	}
+
+	/* CAREERS,LOCATION PAGE - HERO */
+
+	.careers-hero,
+	.location-hero,
+	.cpt-job-hero {
+		background-image: url( './assets/images/careers-locations-hero-desktop.jpg' );
+	}
+
+}
+
+
+@media (min-width: 788px) {
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - DIGITAL ERA */
+
+	.digital-era .left-upward-arrow {
+		left: 0;
+	}
+
+	/* Careers Page --------------------------- */
+
+	.join-us .left-downward-arrow {
+		left: 0;
+	}
+}
+
+
+
+@media (min-width: 900px ) {
+
+	/* Home Page ------------------------------ */
+
+	.riding-telemetry .left-downward-arrow {
+		left: 0;
+	}
+
+	.cities-near-you .right-arrow {
+		left: -70%;
+	}
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .right-arrow {
+		left: -70%;
+	}
+
+}
+
+
+@media (min-width: 1024px ) {
+
+	/* Home Page ------------------------------ */
+
+	.riding-telemetry .left-downward-arrow {
+		left: 35%;
+	}
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - DIGITAL ERA */
+
+	.digital-era .left-upward-arrow {
+		left: 35%;
+	}
+
+	/* Careers Page --------------------------- */
+
+	.join-us .left-downward-arrow {
+		left: 35%;
+	}
+
+}
+
+
+@media (min-width: 1065px ) {
+
+	/* Home Page ------------------------------ */
+
+	.hero-image .right-arrow {
+		left: 0;
+	}
+
+	.cities-near-you .right-arrow {
+		left: -85%;
+	}
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .right-arrow {
+		left: -85%;
+	}
+}
+
+
+@media (min-width: 1200px) {
+
+	.section-inner {
+		 /*width: calc(100% - 33.4rem);*/
+		 width: calc(100% - 33rem)
+	}
+
+	.content-inner {
+		padding: 0;
+	}
+
+	.hero-content {
+		padding: 15.3rem 0 0 0;
+		text-align: left;
+	}
+
+	.hero-content,
+	.hero-content .hero-inner {
+		max-width: 50rem;
+		margin: 0;
+	}
+
+	.hero-title {
+		padding: 0;
+		margin-bottom: 4rem;
+	}
+
+	.hero-text,
+	.hero-cta {
+		margin-left: 9.5rem;
+	}
+
+	.hero-text {
+		padding: 0;
+		margin-bottom: 4rem;
+		width: 39rem;
+	}
+
+	.hero-image .line {
+		display: block;
+		position: absolute;
+		width: 20.3rem;
+		bottom: 28.75rem;
+	}
+
+	.hero-image .right-arrow {
+		left: 40%;
+	}
+
+	/* SECTION - CITIES NEAR YOU */
+
+	.cities-near-you .right-arrow {
+		left: -92%;
+	}
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .right-arrow {
+		left: -92%;
+	}
+}
+
+@media (min-width: 1269px) {
+
+	/* Home Page ------------------------------ */
+
+	/* SECTIONS - RIDING TELEMETRY
+							- CITIES NEAR YOU,
+							- PAYMENTS */
+
+	.riding-telemetry,
+	.cities-near-you,
+	 .payments {
+		display: flex;
+		justify-content: space-between;
+		margin-bottom: 16rem;
+	}
+
+	.riding-telemetry .telemetry-img-wrapper,
+	.payments .payments-img-wrapper,
+	.cities-near-you .near-you-img-wrapper {
+		margin: 0;
+	}
+
+	.riding-telemetry .telemetry-desc,
+	.cities-near-you .cities-desc,
+	.payments .payments-desc {
+		width: 445px;
+		/*height: 313px;*/
+		text-align: left;
+		align-self: center;
+		/*padding: 6.6rem 0;*/
+	}
+
+	.telemetry-desc h2,
+	.cities-desc h2,
+	.payments-desc h2 {
+		margin-bottom: 2.4rem;
+		padding: 0;
+	}
+
+	.telemetry-desc p,
+	.cities-desc p,
+	.payments-desc p	 {
+		margin-bottom: 4rem;
+		padding-left: 0;
+		padding-right: 2.8rem;
+	}
+
+	.telemetry-desc .telemetry-cta,
+	.cities-desc .cities-cta,
+	.payments-desc .payments-cta {
+		margin: 0;
+	}
+
+	/* SECTION - RIDING TELEMETRY */
+
+	.riding-telemetry {
+		flex-direction: row-reverse;
+	}
+
+	.riding-telemetry .left-downward-arrow {
+		left: -29%;
+	}
+
+
+	/* SECTION - CITIES NEAR YOU */
+
+	.cities-near-you .right-arrow {
+		left: -58.62%;
+	}
+
+	/* SECTION - PAYMENTS */
+
+	.payments {
+		flex-direction: row-reverse;
+		margin-bottom: 20rem;
+	}
+
+
+	/* Page Hero - About
+							 - Careers
+							 - Locations
+							 - Job(CPT) single template
+	------------------------------------------- */
+
+	.about-hero,
+	.careers-hero,
+	.location-hero,
+	.cpt-job-hero {
+		margin-bottom: 12rem;
+	}
+
+	/* About & Careers Page ------------------------- */
+
+	/* SECTIONS - OUR VALUES (ABOUT PAGE)
+							- WHY JOIN US (CAREERS PAGE)
+	------------------------------------------------- */
+
+
+	.our-values,
+	.why-join-us {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.our-values .tech,
+	.our-values .integrity,
+	.our-values .community,
+	.why-join-us .tech,
+	.why-join-us .integrity,
+	.why-join-us .community {
+		width: 31.5%;
+		/*margin-right: 3rem;*/
+		margin-right: 2.7%;
+	}
+
+	.our-values .community,
+	.why-join-us .community {
+		margin-right: 0;
+	}
+
+	.our-values h2,
+	.why-join-us h2 {
+		margin-bottom: 10.3rem;
+		order: -1;
+		flex: 1 0 100%; /* flex-grow, flex-shrink, flex-basis */
+	}
+
+	.our-values .tech p,
+	.our-values .integrity p,
+	.our-values .community p,
+	.why-join-us .tech p,
+	.why-join-us .integrity p,
+	.why-join-us .community p {
+		padding: 0 0.9rem;
+	}
+
+
+	/* About Page ----------------------------- */
+
+	/* SECTIONS - DIGITAL ERA,
+							- BETTER LIVING */
+
+	.digital-era,
+	.better-living {
+		display: flex;
+		justify-content: space-between;
+	}
+
+  .digital-era .digital-era-img-wrapper,
+	.better-living .better-living-img-wrapper {
+		margin: 0;
+	}
+
+	.digital-era .digital-era-desc,
+	.better-living .better-living-desc {
+		width: 445px;
+		/*height: 313px;*/
+		text-align: left;
+		align-self: center;
+		/*padding: 12.5rem 0;*/
+	}
+
+	.digital-era-desc p,
+	.better-living-desc p {
+		padding-left: 0;
+		padding-right: 2.8rem;
+	}
+
+	/* SECTION - DIGITAL ERA */
+
+	.digital-era {
+		flex-direction: row-reverse;
+		align-items: center;
+	}
+
+	.digital-era .left-upward-arrow {
+		left: -20%;
+		bottom: 18px;
+	}
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .right-arrow {
+		left: -58.62%;
+	}
+
+	/* SECTION - FAQS */
+
+	.faqs .faq-how-it-works,
+	.faqs .faq-safe-driving {
+		display: grid;
+		grid-template-columns: 350px 1fr;
+		grid-column-gap: 3rem;
+	}
+
+	.faq-how-it-works > article,
+	.faq-safe-driving > article {
+		grid-column: 2;
+	}
+
+	.faqs .faq {
+		padding: 3.2rem 4rem;
+	}
+
+	.faq-how-it-works h3,
+	.faq-safe-driving h3 {
+		text-align: left;
+	}
+
+	.faqs .show-answer .faq-answer {
+		padding-right: 5rem;
+	}
+
+	/* Careers Page --------------------------- */
+
+	/* SECTION - JOIN US */
+
+	.join-us {
+		display: flex;
+		flex-direction: row-reverse;
+		justify-content: space-between;
+		margin-bottom: 12rem;
+	}
+
+	.join-us .join-us-img-wrapper {
+		margin: 0;
+	}
+
+	.join-us .join-us-desc {
+		width: 445px;
+		text-align: left;
+		align-self: center;
+	}
+
+	.join-us-desc h2 {
+		margin-bottom: 2.4rem;
+		padding: 0;
+	}
+
+	.join-us-desc p {
+		margin-bottom: 4rem;
+		padding-left: 0;
+		padding-right: 2.8rem;
+	}
+
+	.join-us-desc .join-us-cta {
+		margin: 0;
+	}
+
+	.join-us .left-downward-arrow {
+		left: -20%;
+	}
+
+	/* SECTION - JOB LISTINGS */
+
+	 .job-listings .job {
+		 padding: 3.2rem 6.4rem 3.5rem 4.0rem;
+		 margin-bottom: 2.4rem;
+	}
+
+	/* Job( CPT ) Single Template ------------- */
+
+	.job-wrapper .single-job {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+	.single-job .job-apply {
+		flex: 40%;
+		margin-right: 3rem;
+		text-align: left;
+	}
+
+	.single-job .job-title {
+		margin-bottom: 0.8rem;
+	}
+
+	.single-job .job-location {
+		margin-bottom: 2rem;
+	}
+
+	.single-job .apply-cta {
+		margin: 0;
+		margin-bottom: 0;
+	}
+
+	.single-job .job-desc {
+		flex: 56%;
+		text-align: left;
+		padding: 3.2rem 4rem;
+
+	}
+
+	.single-job .job-desc p {
+		margin-right: 0.9rem;
+	}
+
+	/* Location Page -------------------------- */
+
+	.world-map {
+		/*background-image: url( './assets/images/world-map-desktop.png' );
+		height: 542.81px;*/
+		margin-bottom: 12.09rem;
+	}
+
+	.world-map .newyork img,
+	.world-map .london img,
+	.world-map .yokohama img,
+	.world-map .jakarta img {
+		width: 18.9rem;
+    height: 8.8rem;
+	}
+
+	.message-us {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.message-us h2 {
+    max-width: 351px;
+		text-align: left;
+		margin-bottom: 0;
+	}
+
+	.message-us p {
+		max-width: 445px;
+    text-align: left;
+		margin-bottom: 0;
+	}
+
+	.message-us .message-us-cta {
+		align-self: center;
+	}
+}
+
+
+@media (min-width: 1330px) {
+
+	.hero-image .right-arrow {
+		width: 44.638rem;
+		/*left: 70.5rem;*/
+		left: 47.95%;
+		bottom: 15.052rem;
+		/*bottom: 23.16%;*/
+	}
+
+	.hero-image .white-circles {
+		width: 23.4rem;
+		/*right: -3.33%;*/
+		right: -48px;
+		bottom: 16.45rem;
+	}
+
+	/* SECTION - HOW IT WORKS */
+
+	.how-it-works {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		grid-column-gap: 3rem;
+		margin-top: 16rem;
+		margin-bottom: 20rem;
+	}
+
+	.how-it-works div:not(.accent-border):not(.ride-scooter) {
+    margin-bottom: 0;
+	}
+
+	.how-it-works .accent-border {
+		height: 1px;
+    width: 97.4rem;
+		left: -19.5rem;
+    top: 4.05rem;
+    transform: rotate(180deg);
+		margin-bottom: 0;
+	}
+
+	.how-it-works div:not(.accent-border) {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.how-it-works img {
+		margin-bottom: 4rem;
+	}
+
+	.how-it-works p {
+		padding-right: 2rem;
+	}
+
+ /* Site Footer ---------------------------- */
+
+	.footer-widgets-outer-wrapper {
+		padding: 10.2rem 0;
+	}
+
+	.footer-widgets {
+		text-align: left;
+	}
+
+	.footer-widgets .widget-content {
+		display: flex;
+    justify-content: space-between;
+    align-items: center;
+	}
+
+	.widget-content .widget-title {
+		margin-bottom: 0;
+		padding: 0;
+		width: 41.5%;
+	}
+}
+
+
+@media (min-width: 1440px) {
+
+	/* Home Page ------------------------------ */
+
+	.hero-image .right-arrow {
+		/*width: 44.638rem;*/
+		/*left: 70.5rem;*/
+		left: 48.95%;
+		/*bottom: 15.052rem;*/
+		/*bottom: 23.16%;*/
+	}
+
+	/* SECTION - HOW IT WORKS */
+
+	.how-it-works .accent-border {
+    left: -16.7rem;
+	}
+
+	/* SECTION - RIDING TELEMETRY */
+
+	.riding-telemetry .left-downward-arrow {
+	  left: 49%;
+	}
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - DIGITAL ERA */
+
+	.digital-era .pattern-circle {
+		transform: translateX(116%);
+	}
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .pattern-circle {
+		transform: translateX(-116%);
+	}
+
+	/* Careers Page --------------------------- */
+
+	/* SECTION - JOIN US */
+
+	.join-us .left-upward-arrow {
+	  left: 49%;
+	}
+
+	.job .job-title {
+		margin-bottom: 0.8rem;
+	}
+
+	.job .job-title,
+	.job .job-location {
+		grid-column: 1 / 2;
+		text-align: left;
+	}
+
+	.job .job-location {
+		margin-bottom: 0;
+	}
+
+	.job .apply-cta {
+		grid-column: 2;
+		grid-row: 1 / 3;
+		align-self: center;
+		margin-left: auto;
+		width: 180px;
+	}
+
+}
+
+
+@media (min-width: 1510px) {
+
+	/* Home Page ------------------------------ */
+
+	/* SECTION - HOW IT WORKS */
+
+	.how-it-works .accent-border {
+		display: none;
+	}
+
+	/* SECTION - RIDING TELEMETRY */
+
+	.riding-telemetry .left-downward-arrow {
+	  left: 300px;
+	}
+
+	/* SECTION - CITIES NEAR YOU */
+
+	.cities-near-you .right-arrow {
+    left: -130%;
+	}
+
+	/* SECTION - PAYMENTS */
+
+	.payments .left-downward-arrow {
+    left: 62%;
+  }
+
+	/* About Page ----------------------------- */
+
+	/* SECTION - DIGITAL ERA */
+
+	.digital-era .left-upward-arrow {
+		left: 62%;
+	}
+
+	/* SECTION - BETTER LIVING */
+
+	.better-living .right-arrow {
+		left: -130%;
+	}
+
+	/* Careers Page --------------------------- */
+
+	/* SECTION - JOIN US */
+
+	.join-us .left-downward-arrow {
+	  left: 300px;
+	}
+
+}
