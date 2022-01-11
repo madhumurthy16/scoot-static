@@ -6,7 +6,7 @@
 		exclude-result-prefixes="sitemap"
 		>
 
-	<xsl:output method="html" encoding="UTF-8" indent="yes"/>
+	<xsl:output method="html" encoding="UTF-8" indent="yes" />
 
 	<!--
 	  Set variables for whether lastmod, changefreq or priority occur for any url in the sitemap.
@@ -19,7 +19,7 @@
 	<xsl:template match="/">
 		<html lang="en-US">
 			<head>
-<meta http-equiv="Last-Modified" content="Tue, 08 Jun 2021 21:20:52 GMT" />
+<meta http-equiv="Last-Modified" content="Tue, 11 Jan 2022 20:00:29 GMT" />
 				<title>XML Sitemap</title>
 				<style>
 					
